@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办事项</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>待办事项列表</h1>
+        <div class="add-todo">
+            <input type="text" id="todoInput" placeholder="输入新的待办事项...">
+            <button onclick="addTodo()">添加</button>
+        </div>
+        <ul id="todoList"></ul>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 

@@ -1,0 +1,74 @@
+{
+  "templates": [
+    {
+      "name": "简约白",
+      "id": "simple-white",
+      "styles": {
+        "background": "#ffffff",
+        "fontFamily": "Microsoft YaHei",
+        "fontSize": "18",
+        "color": "#333333",
+        "textAlign": "center",
+        "padding": "20",
+        "shadow": false,
+        "border": false
+      }
+    },
+    {
+      "name": "暗夜模式",
+      "id": "dark-mode",
+      "styles": {
+        "background": "#2c2c2c",
+        "fontFamily": "Microsoft YaHei",
+        "fontSize": "20",
+        "color": "#ffffff",
+        "textAlign": "center",
+        "padding": "25",
+        "shadow": true,
+        "border": false
+      }
+    },
+    {
+      "name": "复古风格",
+      "id": "vintage",
+      "styles": {
+        "background": "#f4e4bc",
+        "fontFamily": "KaiTi",
+        "fontSize": "22",
+        "color": "#734d26",
+        "textAlign": "left",
+        "padding": "30",
+        "shadow": false,
+        "border": true
+      }
+    },
+    {
+      "name": "现代���约",
+      "id": "modern",
+      "styles": {
+        "background": "#f5f5f5",
+        "fontFamily": "Helvetica",
+        "fontSize": "16",
+        "color": "#2c2c2c",
+        "textAlign": "left",
+        "padding": "20",
+        "shadow": true,
+        "border": false
+      }
+    },
+    {
+      "name": "渐变风格",
+      "id": "gradient",
+      "styles": {
+        "background": "linear-gradient(45deg, #6b48ff, #00ddeb)",
+        "fontFamily": "Microsoft YaHei",
+        "fontSize": "20",
+        "color": "#ffffff",
+        "textAlign": "center",
+        "padding": "25",
+        "shadow": true,
+        "border": false
+      }
+    }
+  ]
+} 

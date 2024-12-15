@@ -1,0 +1,170 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
+}
+
+/* 主容器布局 */
+.app-container {
+    display: grid;
+    grid-template-columns: 200px 1fr 250px;
+    height: 100%;
+    background: #f5f5f5;
+}
+
+/* 左侧模板面板 */
+.template-panel {
+    background: #fff;
+    border-right: 1px solid #eee;
+    padding: 15px;
+}
+
+.template-list {
+    height: calc(100% - 100px);
+    overflow-y: auto;
+}
+
+.template-item {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.template-item:hover {
+    background: #f0f0f0;
+}
+
+.template-item.active {
+    border-color: #1a73e8;
+    background: #e8f0fe;
+}
+
+/* 中间预览区域 */
+.preview-panel {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-preview {
+    flex: 1;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.card-content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    overflow: auto;
+}
+
+/* 右侧样式面板 */
+.style-panel {
+    background: #fff;
+    border-left: 1px solid #eee;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.style-section {
+    margin-bottom: 20px;
+}
+
+.style-section h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.style-item {
+    margin-bottom: 10px;
+}
+
+.style-item label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+/* 表单控件样式 */
+input[type="color"],
+input[type="range"],
+select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 16px;
+    background: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #1557b0;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+}
+
+.export-options {
+    margin: 20px 0;
+}
+
+.option-item {
+    margin-bottom: 15px;
+}
+
+.modal-actions {
+    text-align: right;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .app-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+} 

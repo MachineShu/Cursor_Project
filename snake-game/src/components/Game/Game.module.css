@@ -1,0 +1,32 @@
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.gameHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  font-size: 24px;
+}
+
+.gameBoard {
+  width: 400px;
+  height: 400px;
+  border: 2px solid #333;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.gameStatus {
+  font-size: 24px;
+  height: 30px;
+  text-align: center;
+}
+
+.score, .highScore {
+  font-weight: bold;
+} 

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube 视频下载</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <!-- 标题部分 -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">YouTube 视频下载器</h1>
+            <p class="text-gray-600">输入YouTube视频链接即可下载</p>
+        </div>
+
+        <!-- 下载表单 -->
+        <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6 mb-8">
+            <div class="flex gap-2">
+                <input type="text" id="url" 
+                    class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                    placeholder="请输入YouTube视频链接">
+                <button onclick="downloadVideo()" 
+                    class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                    下载
+                </button>
+            </div>
+            <div id="status" class="mt-2 text-sm text-gray-600"></div>
+        </div>
+
+        <!-- 视频列表 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {% for url, video in videos.items() %}
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <video controls class="w-full h-48 object-cover">
+                    <source src="/static/videos/{{ video.filename | replace(VIDEOS_DIR, '') }}" type="video/mp4">
+                </video>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">{{ video.title }}</h3>
+                    <div class="text-sm text-gray-600">
+                        <p>时长: {{ video.duration }}秒</p>
+                        <p>作者: {{ video.uploader }}</p>
+                        <p>大小: {{ video.filesize // 1024 // 1024 }}MB</p>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-500 line-clamp-2">{{ video.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        async function downloadVideo() {
+            const url = document.getElementById('url').value;
+            const status = document.getElementById('status');
+            
+            if (!url) {
+                status.textContent = '请输入视频链接';
+                return;
+            }
+
+            status.textContent = '开始下载...';
+            
+            try {
+                const formData = new FormData();
+                formData.append('url', url);
+                
+                const response = await fetch('/download', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                status.textContent = data.status;
+                
+                // 3秒后刷新页面显示新下载的视频
+                setTimeout(() => location.reload(), 3000);
+            } catch (error) {
+                status.textContent = '下载失败: ' + error;
+            }
+        }
+    </script>
+</body>
+</html> 

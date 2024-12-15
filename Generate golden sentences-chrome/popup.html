@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>金句卡片生成器</title>
+    <link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 左侧模板面板 -->
+        <div class="template-panel">
+            <h3>卡片模板</h3>
+            <div class="template-list" id="templateList">
+                <!-- 模板列表将通过JS动态生成 -->
+            </div>
+            <div class="template-actions">
+                <button id="importTemplate">导入模板</button>
+                <button id="exportTemplate">导出模板</button>
+            </div>
+        </div>
+
+        <!-- 中间预览区域 -->
+        <div class="preview-panel">
+            <div class="card-preview" id="cardPreview">
+                <div class="card-content" id="cardContent">
+                    <!-- 卡片内容区域 -->
+                </div>
+            </div>
+            <div class="preview-actions">
+                <button id="exportCard">导出卡片</button>
+                <button id="saveTemplate">保存为模板</button>
+            </div>
+        </div>
+
+        <!-- 右侧样式编辑面板 -->
+        <div class="style-panel">
+            <h3>样式设置</h3>
+            
+            <!-- 背景设置 -->
+            <div class="style-section">
+                <h4>背景设置</h4>
+                <div class="style-item">
+                    <label>背景类型:</label>
+                    <select id="bgType">
+                        <option value="color">纯色</option>
+                        <option value="gradient">渐变</option>
+                        <option value="image">图片</option>
+                    </select>
+                </div>
+                <div class="style-item" id="colorPicker">
+                    <label>背景颜色:</label>
+                    <input type="color" id="bgColor">
+                </div>
+            </div>
+
+            <!-- 字体设置 -->
+            <div class="style-section">
+                <h4>字体设置</h4>
+                <div class="style-item">
+                    <label>字体:</label>
+                    <select id="fontFamily"></select>
+                </div>
+                <div class="style-item">
+                    <label>字号:</label>
+                    <input type="range" id="fontSize" min="12" max="72">
+                    <span id="fontSizeValue">16px</span>
+                </div>
+                <div class="style-item">
+                    <label>颜色:</label>
+                    <input type="color" id="fontColor">
+                </div>
+            </div>
+
+            <!-- 布局设置 -->
+            <div class="style-section">
+                <h4>布局设置</h4>
+                <div class="style-item">
+                    <label>对齐:</label>
+                    <select id="textAlign">
+                        <option value="left">左对齐</option>
+                        <option value="center">居中</option>
+                        <option value="right">右对齐</option>
+                    </select>
+                </div>
+                <div class="style-item">
+                    <label>内边距:</label>
+                    <input type="range" id="padding" min="0" max="100">
+                    <span id="paddingValue">20px</span>
+                </div>
+            </div>
+
+            <!-- 特效设置 -->
+            <div class="style-section">
+                <h4>特效设置</h4>
+                <div class="style-item">
+                    <label>阴影:</label>
+                    <input type="checkbox" id="enableShadow">
+                </div>
+                <div class="style-item">
+                    <label>边框:</label>
+                    <input type="checkbox" id="enableBorder">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导出设置弹窗 -->
+    <div class="modal" id="exportModal">
+        <div class="modal-content">
+            <h3>导出设置</h3>
+            <div class="export-options">
+                <div class="option-item">
+                    <label>格式:</label>
+                    <select id="exportFormat">
+                        <option value="png">PNG</option>
+                        <option value="jpeg">JPEG</option>
+                        <option value="webp">WEBP</option>
+                    </select>
+                </div>
+                <div class="option-item">
+                    <label>质量:</label>
+                    <input type="range" id="exportQuality" min="1" max="100" value="90">
+                    <span id="qualityValue">90%</span>
+                </div>
+                <div class="option-item">
+                    <label>尺寸:</label>
+                    <input type="number" id="exportWidth" placeholder="宽度">
+                    <input type="number" id="exportHeight" placeholder="高度">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="confirmExport">确认</button>
+                <button id="cancelExport">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/html2canvas.min.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/export.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html> 
