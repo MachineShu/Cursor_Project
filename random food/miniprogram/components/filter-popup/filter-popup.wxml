@@ -1,0 +1,20 @@
+<view class="filter-popup {{show ? 'show' : ''}}">
+  <view class="mask" bindtap="onClose"></view>
+  <view class="content">
+    <view class="header">
+      <text>选择{{type === 'budget' ? '预算' : type === 'taste' ? '口味' : '距离'}}</text>
+      <text class="close" bindtap="onClose">×</text>
+    </view>
+    <view class="options">
+      <view 
+        wx:for="{{options}}" 
+        wx:key="value"
+        class="option-item {{item.value === value ? 'selected' : ''}}"
+        bindtap="onSelect"
+        data-value="{{item.value}}"
+      >
+        {{item.text}}
+      </view>
+    </view>
+  </view>
+</view> 

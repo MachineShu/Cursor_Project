@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "filter-popup": "../../components/filter-popup/filter-popup"
+  }
+}

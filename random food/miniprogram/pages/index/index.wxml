@@ -1,0 +1,82 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list" refresher-enabled="{{true}}" bindrefresherrefresh="onRefresh">
+  <view class="container">
+    <!-- 头部区域 -->
+    <view class="header">
+      <view class="userinfo" wx:if="{{hasUserInfo}}">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </view>
+      <view class="filter-bar">
+        <view class="filter-item" bindtap="onFilterTap" data-type="budget">
+          <text>预算</text>
+          <text class="selected-value">{{filters.budget || '不限'}}</text>
+        </view>
+        <view class="filter-item" bindtap="onFilterTap" data-type="taste">
+          <text>口味</text>
+          <text class="selected-value">{{filters.taste || '不限'}}</text>
+        </view>
+        <view class="filter-item" bindtap="onFilterTap" data-type="distance">
+          <text>距离</text>
+          <text class="selected-value">{{filters.distance || '不限'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 主体内容区 -->
+    <view class="content">
+      <!-- 结果展示区 -->
+      <view class="result-area" wx:if="{{currentFood}}">
+        <view class="food-card">
+          <image class="food-image" src="{{currentFood.imageUrl}}" mode="aspectFill"></image>
+          <view class="food-info">
+            <text class="food-name">{{currentFood.name}}</text>
+            <text class="food-price">¥{{currentFood.price}}</text>
+            <text class="food-distance">{{currentFood.distance}}km</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 空状态展示 -->
+      <view class="empty-state" wx:else>
+        <text>点击下方按钮开始随机</text>
+      </view>
+
+      <!-- 操作按钮区 -->
+      <view class="action-bar">
+        <view class="action-btn" bindtap="onRandomTap">
+          <text>开始随机</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 快捷操作区 -->
+    <view class="quick-actions">
+      <view class="action-item" bindtap="onQuickAction" data-action="favorite">
+        <text class="action-icon">❤</text>
+        <text>收藏</text>
+      </view>
+      <view class="action-item" bindtap="onQuickAction" data-action="blacklist">
+        <text class="action-icon">✕</text>
+        <text>不喜欢</text>
+      </view>
+      <view class="action-item" bindtap="onQuickAction" data-action="share">
+        <text class="action-icon">↗</text>
+        <text>分享</text>
+      </view>
+      <view class="action-item" bindtap="onQuickAction" data-action="navigate">
+        <text class="action-icon">➢</text>
+        <text>导航</text>
+      </view>
+    </view>
+
+    <!-- 筛选弹窗 -->
+    <filter-popup
+      show="{{filterPopup.show}}"
+      type="{{filterPopup.type}}"
+      value="{{filterPopup.value}}"
+      bind:close="onFilterClose"
+      bind:select="onFilterSelect"
+    />
+  </view>
+</scroll-view>
